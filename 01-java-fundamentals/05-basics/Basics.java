@@ -29,21 +29,11 @@ public class Basics {
         }
     }
 
-    // prints the max of any array ??
-    public Integer max(int [] arr){
-
-        int maxNum = arr[0];
-        for (int i : arr){
-            if (i < maxNum)
-                maxNum = i;
-        }
-        return maxNum;
-        }
         // generates only the odd numbers of an array
     public void Oddarray(){
         ArrayList<Integer> y = new ArrayList<Integer>();
         
-        for (int i = 0; i < 266; i++){
+        for (int i = 0; i < 256; i++){
             if (i % 2 != 0){
                 y.add(i);
             }
@@ -51,78 +41,116 @@ public class Basics {
         System.out.println(y);
     }
 
+
+        // find numbers greater than a given number in an array
+        public void greaterThan(int y){
+            int [] array1 = {1,2,5,7,3};
+            for (int i = 0; i < array1.length; i++){
+                if (array1[i] > y){
+                    System.out.println(array1[i]);
+                }
+            }
+        }
+    
+    // prints the max of any array ??
+    public  int max(int [] myarray){
+
+        int max= 0;
+        for (int i = 0; i < myarray.length; i++){
+            if (myarray[i] > max)
+                max = myarray[i];
+        }
+        return max;
+        }
+
     //Average of an array
-    public void arrayAvg(int [] arr1){
-        double sum = 0.0;
-        double avg = 0.0;
-        // calculates sum of array numbers
-        for (int i = 0; i < arr1.length; i++){
-            sum += arr1[i];
+    public int arrayAvg(int [] myArray){
+        int sum = 0;
+        int avg = 0;
+        // calculates sum of myArray numbers
+        for (int i = 0; i < myArray.length; i++){
+            sum += myArray[i];
         }
         // calculates the average of the array
-        avg = sum / arr1.length;
+        avg = sum / myArray.length;
 
-        System.out.println(avg);
+        return avg;
     }
-    // find numbers greater than a given number in an array
-    public void greaterThan(int y){
-        int [] array1 = {1,2,5,7,3};
-        for (int i : array1){
-            if (array1[i] > y){
-                System.out.println(array1[i]);
-            }
+    // Square all values in a given Array
+    public void Square(int [] myArray){
+        ArrayList<Double> myArray2 = new ArrayList<Double>();
+        for (int i = 0; i < myArray.length; i++){
+            double z = Math.pow(myArray[i],2);
+            myArray2.add(z);
         }
-    }
-    // Square all values in a given array
-    public void Square(){
-        int [] arrayx = ArrayList(1,5,10,-2);
-        intArrayList [] arrayy = {};
-        for (int i : arrayx){
-            double z = pow(arrayx[i],2 );
-            arrayy.add(z);
-        }
-        System.out.println(arrayy);
+        System.out.println(myArray2);
     }
     // Eliminate Negative Numbers
-    public void NoNegatives(){
-        intArrayList [] noNegs = ArrayList(1,5,10,-6,-3);
-        intArrayList [] onlypos = {};
-        for (int i : noNegs){
-            if(noNegs[i] > 0){
-                onlypos.add(noNegs[i]);
+    public void NoNegatives(int [] myArray){
+        ArrayList<Integer> myArray3 = new ArrayList<Integer>();
+
+        for (int i = 0; i < myArray.length; i++){
+            if ( myArray[i] > 0){ 
+                myArray3.add(myArray[i]);
             }
         }
-        System.out.println(onlypos);
+        System.out.println(myArray3); 
+
+        }
+
+
+    public void MaxMinAvg(int [] myArray){
+        
+        int sum = 0;
+        int maxNum = myArray[0];
+        int minNum = myArray[0];
+        ArrayList<Integer> maxminavg = new ArrayList<Integer>();
+
+        for (int i = 0; i < myArray.length; i++){
+            sum += myArray[i];
+            if (myArray[i] > maxNum){
+                    maxNum = myArray[i];
+            } else if( myArray[i] < maxNum){
+                minNum = myArray[i];
+        }
     }
-    public void MaxMinAvg(int [] array3){
-        intArrayList [] maxminavg = {};
-        double sum = 0;
-        double avg = 0;
-        double maxNum = array3[0];
-        double minNum = array3[0];
-        for (int i = o; i < array3.length; i++){
-            sum += array3[i];
-            if(i < maxNum){
-                maxNum = i;
-            }
-            if (i > minNum){
-                minNum = i;
-            }
-        }
-        avg = sum / array3.length;
-        maxminavg.add(maxNum,minNum,avg);
+        int avg = sum / myArray.length;
+        maxminavg.add(maxNum);
+        maxminavg.add(minNum);
+        maxminavg.add(avg);
         System.out.println(maxminavg);
         }
     
-    public void Shifting(int [] array4) {
-        intArrayList [] shifted = {};
-        for(int i = 0; i < array4.length; i ++){
-            array4[i] = array4[i+1];
-            shifted.add(array4[i]);
-            array4[array4.length-1] = 0;
-            shifted.add(array4[array4.length-1]);
+    public void Shifting(int [] myArray) {
+
+//         int z = myArray.length - 1;
+//         for(int i = 0; i < myArray.length; i ++){
+//             if (i+1 == myArray.length){
+//                 break;
+//             } else {
+//             myArray[i] = myArray[i+1];
+//             } 
+//         }
+//         myArray[z]=0;
+
+//         System.out.println(myArray);
+//     }
+// }
+    // Below works if you want to create a new array
+
+        ArrayList<Integer> shifted = new ArrayList<Integer>();
+        int z = myArray.length - 1;
+        for(int i = 0; i < myArray.length; i ++){
+            if (i+1 == myArray.length){
+                break;
+            } else {
+            myArray[i] = myArray[i+1];
+            shifted.add(myArray[i]);
+            } 
         }
-        System.out.println(shifted);
+        myArray[z]=0;
+        shifted.add(myArray[z]);
+        System.out.println("Shifted Array ::"+shifted);
     }
 
 }
