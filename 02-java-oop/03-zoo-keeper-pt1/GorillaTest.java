@@ -9,6 +9,6 @@ public class GorillaTest {
         g.eatBananas();
         g.eatBananas();
         g.climb();
-        g.displayEnery();
+        g.displayEnergy();
     }
 }
