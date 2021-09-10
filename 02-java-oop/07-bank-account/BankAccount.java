@@ -1,6 +1,5 @@
 import java.util.Random;
 
-import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 public class BankAccount {
    //display Account number
    //display checking Account and savings account balances

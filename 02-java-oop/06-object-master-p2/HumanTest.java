@@ -49,7 +49,4 @@ public class HumanTest {
 
     }
 
-	private static String howMany() {
-		return null;
-	}  
 }
