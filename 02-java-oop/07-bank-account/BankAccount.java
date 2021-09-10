@@ -26,7 +26,8 @@ public class BankAccount {
     public int NumGen (){
         Random an = new Random();
 
-        Integer acctnum = an.nextInt(10);
+        Integer acctnum = an.nextInt(1000000);
+        
         return acctnum;
     }
 
