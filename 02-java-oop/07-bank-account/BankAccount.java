@@ -1,3 +1,6 @@
+import java.util.Random;
+
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 public class BankAccount {
    //display Account number
    //display checking Account and savings account balances
@@ -5,55 +8,68 @@ public class BankAccount {
    // withdraw method
    //checking balance
     private int accountNumber = 0;
-    private static double checkingBalance = 0.00;
-    private static double savingsBalance = 0.00;
+    private double checkingBalance = 0.00;
+    private double savingsBalance = 0.00;
     private static int numberOfAccounts = 0;
-    private static double totalCash = 0.00;
+    private double totalCash = 0.00;
 
-
+    //Constructor for a BankAccount
     public BankAccount(){
         numberOfAccounts ++;
-        BankAccount.checkingBalance = 0.00;
-        BankAccount.savingsBalance = 0.00;
-        totalCash += BankAccount.checkingBalance + BankAccount.savingsBalance;
-        this.accountNumber = accountNumber;
+        this.checkingBalance = 0.00;
+        this.savingsBalance = 0.00;
+        totalCash += this.checkingBalance + this.savingsBalance;
+        this.accountNumber = acctNumGen();
 
     }
+    // returns a random 10 digit account number
+    public int NumGen (){
+        Random an = new Random();
 
-    public static int getAccountTotal(){
+        Integer acctnum = an.nextInt(10);
+        return acctnum;
+    }
+
+
+    public int acctNumGen(){
+        for(int i =0; i <11; i++){
+        this.accountNumber = accountNumber + NumGen();
+        }
+        return accountNumber;
+    }
+    public int getAccountTotal(){
         return numberOfAccounts;
     }
 
-    public static double getTotalCash(){
+    public double getTotalCash(){
         return totalCash;
     }
 
-    private static getCheckingAccountBalance(int accountNumber){
+    public double getCheckingAccountBalance(){
         
         return checkingBalance;
     }
-    private static getSavingsAccountBalance(int accountNumber){
-        
+    public double getSavingsAccountBalance(){
         return savingsBalance;
     }
 
-    public static depositMoney(boolean checking, double amount){
+    public void depositMoney(boolean checking, double amount){
         if(checking == true) {
             checkingBalance += amount;
             totalCash += amount;
-            System.out.print("$"+ amount + " deposited into checking. Balance of checking account is now $"+checkingBalance);
+            System.out.print("\n$"+ amount + " deposited into checking.\nBalance of checking account is now $"+checkingBalance);
             } else {
                 savingsBalance += amount;
                 totalCash += amount;
-                System.out.println("$"+amount+" deposited into savings. Balance of savings account is now $"+savingsBalance);
+                System.out.println("\n$"+amount+" deposited into savings.\nBalance of savings account is now $"+savingsBalance);
             }
     }
-    public static withdrawMoney(boolean checking, double amount){
+    public void withdrawMoney(boolean checking, double amount){
         if (checking == true){
             if (amount < checkingBalance){
             checkingBalance -= amount;
             totalCash -= amount;
-            System.out.println("$"+amount+" was withdrawn from checking account. Balance of checking account is now $"+checkingBalance);
+            System.out.println("\n$"+amount+" was withdrawn from checking account.\nBalance of checking account is now $"+checkingBalance);
             }else{
                 System.out.println("Insufficeint Funds!");
             }
@@ -61,7 +77,7 @@ public class BankAccount {
             if (amount < savingsBalance){
             savingsBalance -= amount;
             totalCash -= amount;
-            System.out.print("$"+amount+" was withdrawn from savings account. Balance of savings account is now $"+savingsBalance);
+            System.out.print("\n$"+amount+" was withdrawn from savings account.\nBalance of savings account is now $"+savingsBalance);
             }else {
                 System.out.println("Insufficeint Funds!");
 
@@ -69,7 +85,8 @@ public class BankAccount {
         }
     }
     public void viewTotalCash(){
-        double totalBalance = checkingBalance + savingsBalance;
+        totalCash = checkingBalance + savingsBalance;
+        System.out.println("\nThe total Cash between Checking and Savings available for withdraw is ::"+totalCash);
     }
 
 
