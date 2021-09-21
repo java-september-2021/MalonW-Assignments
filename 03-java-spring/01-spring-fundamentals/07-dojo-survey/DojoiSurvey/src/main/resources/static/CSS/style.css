@@ -1,6 +1,9 @@
 @charset "ISO-8859-1";
 .menu{
-	display:inline-grid;
-	align-content:center;
+	display: inline-grid;
+    width: 20em;
+    margin: 1em 3em 1em 24em;
+    border: 2px solid black;
+    padding: 2em;
 	
 }

@@ -11,6 +11,7 @@ public class DisplayDateTimeController {
 	}
 	@RequestMapping("/date")
 	public String date() {
+		
 		return "date.jsp";
 	}
 	@RequestMapping("/time")

@@ -7,7 +7,6 @@
 <meta charset="ISO-8859-1">
 <title>Dojo Survey Index</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script type="text/javascript" src="js/app.js"></script>
 
 </head>
 <body>
@@ -15,20 +14,24 @@
 <h1>Welcome</h1>
 <form action="/result" method="post">
 	<label>Your Name: <input type="text" name="name"></label>
+	<br>
 	<label>Dojo Location: <select name="dojo" >
 			<option value = "oakland">Oakland</option>
 			<option value= "San Jose">San Jose</option>
 			<option value= "online">Online</option>
 		</select>
 	</label>
+	<br>
 	<label>Favorite Language: <select name = "language">
 			<option value = "html">HTML</option>
 			<option value= "python">Python</option>
 			<option value = "java">JAVA</option>
 		</select>
 	</label>
+	<br>
 <label for="comment">Comments:(optional)</label>
-<textArea name="comment"></textArea>
+<br>
+<textArea name="comment"></textArea><br>
 	<button>Submit</button>
 </form>
 </div>

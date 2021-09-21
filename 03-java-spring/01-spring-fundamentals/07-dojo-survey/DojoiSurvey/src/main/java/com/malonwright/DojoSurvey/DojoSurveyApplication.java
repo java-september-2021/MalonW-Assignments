@@ -1,13 +1,13 @@
-package com.malonwright.DojoiSurvey;
+package com.malonwright.DojoSurvey;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DojoiSurveyApplication {
+public class DojoSurveyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DojoiSurveyApplication.class, args);
+		SpringApplication.run(DojoSurveyApplication.class, args);
 	}
 
 }
