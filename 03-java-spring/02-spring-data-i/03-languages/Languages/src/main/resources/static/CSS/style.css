@@ -1,0 +1,30 @@
+@charset "ISO-8859-1";
+.main {
+	border:2px solid black;
+	width:350px;
+}
+.create{
+	width: 325px;
+    border: 2px solid black;
+    padding: 15px;	
+}
+.edit{
+	width: 315px;
+    border: 2px solid black;
+    padding: 15px;	
+}
+.delete {
+  background: none;
+  border: none;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1em;
+  font-family: serif;
+}
+.delete :focus {
+  outline: none;
+}
+.delete :active {
+  color:red;
+}

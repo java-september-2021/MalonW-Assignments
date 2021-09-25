@@ -5,21 +5,20 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title><c:out "${language.id }/></title>
+<title>Language</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-<header><a href="/">Dashboard</a></header>
+<header><a href="/">Main Page</a></header>
 <div class="show">
-<label name="languageName">Language Name: <c:out "${language.languageName }"/></label>
-<label name = "creatorName">Creator Name: <c:out "${language.creatorName }/></label>
-<label name = "version">Version: <c:out "${language.version }/></label>
-
+<h1><c:out value="${language.languageName}"/></h1>
+<p>Creator Name: <c:out value= "${language.creatorName }" /></p>
+<p>Version: <c:out value="${language.version }" /></p>
 <p>
-<a href ="/{id}/edit">Edit</a>
+<a href ="/edit/${id}">Edit</a>
 </p>
 <p>
-<a href="/{id}/delete">Delete</a>
+<a href="/delete/${id}">Delete</a>
 </div>
 </body>
 </html>

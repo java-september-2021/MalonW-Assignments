@@ -30,7 +30,7 @@ public class LanguageService {
 		return this.lRepo.save(language);
 	}
 	//Delete a Language
-	public String deleteLangauage(Long id) {
+	public String deleteLanguage(Long id) {
 		this.lRepo.deleteById(id);
 		return "This language has been deleted";
 	}

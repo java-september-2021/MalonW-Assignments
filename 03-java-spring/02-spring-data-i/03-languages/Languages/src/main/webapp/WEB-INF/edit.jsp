@@ -11,21 +11,27 @@
 </head>
 <body>
 <header>
-<a href="/{id}/delete">Delete</a>
-<a href="/">Dashboard</a>
+
+<a href="/">Main Page</a>
 </header>
+<div class="edit">
 <h1>Edit a Language</h1>
-<form:form method ="POST" action="/${language.id}/edit" modelAttribute="language">
+<form:form method ="POST" action="/edit/${language.id}" modelAttribute="language">
 	<form:label path="languageName">Language Name:</form:label>
 	<form:errors path = "languageName"/>
 	<form:input type ="text" path="languageName"/>
 	<form:label path = "creatorName">Creator Name:</form:label>
 	<form:errors path = "creatorName"/>
-	<form:input type="text" pathr="creatorName"/>
+	<form:input type="text" path="creatorName"/>
 	<form:label path = "version">Version</form:label>
-	<form:errors path = "version"/>
+	<form:errors path = "version" />
 	<form:input type="text" path ="version"/>
 	<p><button>Edit Language</button></p>
 	</form:form>
+		<form action="/delete/${language.id}"  method="post">
+    	<input type="hidden" name="_method" value="delete">
+    	<input type="submit" value="Delete" class="delete">
+	</form>
+</div>
 </body>
 </html>

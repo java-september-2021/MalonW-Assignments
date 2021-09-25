@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
+<div class="main">
 <table>
 	<thead>
 		<tr>
@@ -22,21 +23,21 @@
 	<tbody>
 		<c:forEach items="${languages }" var = "language">
 			<tr>
-				<td><a href="/show/{id}"><c:out value="${languages.languageName }"/></a></td>
-				<td><c:out value="${languages.creatorName }"/></td>
-				<td><c:out value="${languages.version }"/></td>
-				<td><a href="/{id}/delete/">Delete</a>|<a href="/{id}/edit">Edit</a></td>
+				<td><a href="/show/${language.id}"><c:out value="${language.languageName }"/></a></td>
+				<td><c:out value="${language.creatorName }"/></td>
+				<td><c:out value="${language.version }"/></td>
+				<td>	<form action="/delete/${language.id}"  method="post">
+    						<input type="hidden" name="_method" value="delete">
+    						<input type="submit" value="Delete" class="delete">
+						</form> | <a href="/edit/${language.id}">Edit</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>	
 	
 </table>
-<h1>New Language</h1>
-<form:form action="/create" method="POST" modelAttribute="language">
-	<form:label path="languageName">Language Name:<form:errors path="languageName"/><form:input type="text"name="languageName"/></form:label>
-	<form:label path="creatorName">Language Creator:<form:errors path="creatorName"/><form:input type="text" name="creatorName"/></form:label>
-	<form:label path="version">Version:<form:errors path="version"/><form:input type="text" name="version"/></form:label>
-<form:input type="submit" value="Submit"/>
-</form:form>
+</div>
+<p>
+<a href="/new">Enter a New Language</a>
+<p>
 </body>
 </html>
