@@ -43,6 +43,12 @@ public class Dojo {
 	public Dojo() {
 		
 	}
+	public Dojo(Long id, Date createdAt, Date updatedAt, List<Ninja> ninjas) {
+		this.id =id;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		
+	}
 
 	public Long getId() {
 		return id;

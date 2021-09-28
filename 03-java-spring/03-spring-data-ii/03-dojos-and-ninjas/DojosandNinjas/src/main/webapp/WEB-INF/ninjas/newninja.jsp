@@ -13,12 +13,11 @@
 <div class="new">
 <h2>New Ninja</h2>
 <form:form action="/ninjas/createNinja" method="post" modelAttribute="ninja">
-	<form:label path="dojo_id">Dojo:</form:label>
-	<form:select path="dojo_id">
-	<c:forEach items="${dojos }" var="dojo">
-			<form:option value="${dojo.name }">Select Dojo</form:option>
-			
-		</c:forEach>
+	<form:label path="dojo">Select Dojo:</form:label>
+	<form:select path="dojo">
+		<form:option value="${dojo}">
+			<c:out value="${dojo.name }"/>
+		</form:option>
 	</form:select>
 	
 	<form:label path="firstName">First Name:</form:label>

@@ -11,8 +11,12 @@
 </head>
 <body>
 <div class="new">
+<a href="/index">Dashboard</a>
+<a href="/ninjas/new">Register a new Ninja</a>
+
 <h2>New Dojo</h2>
-<form:form action="/dojos/createDojo" method="post" modelAttribute="ninja">
+
+<form:form action="/dojos/createDojo" method="post" modelAttribute="dojo">
 	<form:label path="name">Name:</form:label>
 	<form:errors path="name"/>
 	<form:input type="text" path="name"/>
