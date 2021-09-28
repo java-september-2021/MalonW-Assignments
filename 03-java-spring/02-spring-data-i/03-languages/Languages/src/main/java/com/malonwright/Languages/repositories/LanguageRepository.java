@@ -11,6 +11,6 @@ import com.malonwright.Languages.models.Language;
 public interface LanguageRepository extends CrudRepository<Language, Long> {
 	List<Language> findAll();
 
-//	void deleteById(Long id);
+
 
 }

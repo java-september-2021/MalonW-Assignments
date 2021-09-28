@@ -21,7 +21,7 @@ public class LanguageService {
 	public Language getOneLanguage(Long id) {
 		return this.lRepo.findById(id).orElse(null);
 	}
-	//Create an Language
+	//Create a Language
 	public Language createLanguage(Language language) {
 		return this.lRepo.save(language);
 	}

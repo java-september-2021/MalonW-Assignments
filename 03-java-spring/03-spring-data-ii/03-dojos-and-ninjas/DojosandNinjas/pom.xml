@@ -8,11 +8,11 @@
 		<version>2.5.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.malonwright.Languages</groupId>
-	<artifactId>Languages</artifactId>
+	<groupId>com.malonwright.DojosandNinjas</groupId>
+	<artifactId>DojosandNinjas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Languages</name>
-	<description>Demo project for Spring Boot</description>
+	<name>DojosandNinjas</name>
+	<description>Learning Controllers</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>

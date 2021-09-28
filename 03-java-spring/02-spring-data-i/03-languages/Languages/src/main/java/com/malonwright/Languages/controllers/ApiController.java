@@ -34,6 +34,6 @@ public class ApiController {
 	}
 	@DeleteMapping("/delete/{id}")
 	public String delete(@PathVariable("id") Long id) {
-		return this.lService.deleteLangauage(id);
+		return this.lService.deleteLanguage(id);
 	}
 }
