@@ -19,15 +19,15 @@
 		</tr>
 	</thead>
 	<tbody>
-	<c:if test="${dojo_id == dojo.id }"> 
-		<c:forEach items="${ninjas }" var="ninja">
+	
+		<c:forEach items="${dojo.ninjas }" var="ninja">
 		<tr>
 			<td><c:out value="${ninja.firstName }"/></td>
 			<td><c:out value="${ninja.lastName }"/></td>
 			<td><c:out value="${ninja.age }"/></td>
 		</tr>
 		</c:forEach>
-	</c:if>
+	
 	</tbody>				
 </table>
 </div>

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.malonwright.DojosandNinjas.models.Dojo;
@@ -32,10 +33,7 @@ public class HomeController {
 	}
 	
 	@GetMapping("/dojos/show/{id}")
-	public String showDojo(Long id, Model viewModel) {
-		dService.getOneDojo(id);
-		dService.getAllNinjas();
-		viewModel.addAttribute("ninja", this.dService.getAllNinjas());
+	public String showDojo(@PathVariable("id")Long id, Model viewModel) {
 		viewModel.addAttribute("dojo", this.dService.getOneDojo(id));
 		return "/dojos/show.jsp";
 	}
