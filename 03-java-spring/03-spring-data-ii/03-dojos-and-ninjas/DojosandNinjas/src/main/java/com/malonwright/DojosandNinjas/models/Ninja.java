@@ -28,10 +28,12 @@ public class Ninja {
 	private Long id;
 	@NotBlank
 	@Size(min =2, max = 20)
-	private String firstNmae;
+	private String firstName;
+	
 	@NotBlank
 	@Size(min =2, max = 20)
 	private String lastName;
+	
 	@NotNull
 	private int age;
 	
@@ -68,11 +70,11 @@ public class Ninja {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getFirstNmae() {
-		return firstNmae;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setFirstNmae(String firstNmae) {
-		this.firstNmae = firstNmae;
+	public void setFirstName(String firstNmae) {
+		this.firstName = firstNmae;
 	}
 	public String getLastName() {
 		return lastName;

@@ -3,3 +3,14 @@
 	display:flex;
 	justify-content:space-around;
 }
+
+.new{
+	margin:5em;
+	witdth:400px;
+}
+.new a{
+    margin-right: 4em;
+}
+header a{
+	margin-right:4em;
+}

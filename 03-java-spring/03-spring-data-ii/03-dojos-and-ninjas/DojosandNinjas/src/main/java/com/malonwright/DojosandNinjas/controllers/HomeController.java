@@ -21,42 +21,49 @@ public class HomeController {
 
 	@Autowired
 	private DojoService dService;
-	
+	//index
 	@GetMapping("/")
 	public String index() {
 		return "/index.jsp";
 	}
-	
+	//new dojo form with list of dojos
 	@GetMapping("/dojos/new")
-	public String newDojo() {
+	public String newDojo(@ModelAttribute("dojo")Dojo dojo, Model viewModel) {
+		viewModel.addAttribute("dojos", this.dService.getAllDojos());
 		return "/dojos/newdojo.jsp";
 	}
-	
+	//show 1 dojo with list of students
 	@GetMapping("/dojos/show/{id}")
 	public String showDojo(@PathVariable("id")Long id, Model viewModel) {
 		viewModel.addAttribute("dojo", this.dService.getOneDojo(id));
 		return "/dojos/show.jsp";
 	}
+	//new ninja form
 	@GetMapping("/ninjas/new")
-	public String newNinja() {
+	public String newNinja(@ModelAttribute("ninja")Ninja ninja, Model viewModel) {
+		viewModel.addAttribute("dojo",this.dService.getAllDojos());
 		return "/ninjas/newninja.jsp";
 	}
+	
+	//create dojo
 	@PostMapping("/dojos/createDojo")
 	public String createDojo(@Valid @ModelAttribute("dojo")Dojo dojo, BindingResult result){
 		if(result.hasErrors()) {
-			return "newdojo.jsp";
+			return "/dojos/newdojo.jsp";
 		}
 		dService.createDojo(dojo);
-		return "redirect:/index";
+		return "redirect:/dojos/new";
 	}
-	
+	//create ninja
 	@PostMapping("/ninjas/createNinja")
 	public String createNinja(@Valid @ModelAttribute("ninja")Ninja ninja, BindingResult result) {
 		if(result.hasErrors()) {
-			return"newninja.jsp";
+			return"/ninjas/newninja.jsp";
 		}
 		dService.createNinja(ninja);
+//		return "/ninjas/newninja.jsp";
 		return String.format("redirect:/dojos/show/%s", ninja.getDojo().getId());
+//		return "redirect:/";
 	}
 }
 
