@@ -15,9 +15,15 @@
 </head>
 <body>
 <header><a href="/songList">Dashboard</a></header>
-<h1><c:out value="${song.songName}"/></h1>
-<h4><c:out value="${song.artistName}"/></h4>
-<h4><c:out value="${song.rating}"/></h4>
-<p><a href="/delete/${song.id}">Delete</a></p>
+<hr>
+<h4>Song Name: <c:out value="${song.songName}"/></h4>
+<h4>Artist: <c:out value="${song.artistName}"/></h4>
+<h4>Rating: <c:out value="${song.rating}"/></h4>
+<hr>
+<p>
+	<form action ="/delete/${song.id}" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete" class="delete">
+	</form></p>
 </body>
 </html>

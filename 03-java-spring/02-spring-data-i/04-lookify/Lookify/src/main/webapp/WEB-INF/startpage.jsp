@@ -9,7 +9,7 @@
 </head>
 <body>
 <header>
-<h1> Welcom to Lookify!</h1>
+<h1> Welcome to Lookify!</h1>
 </header>
 
 <h4><a href="/songList">Start Looking</a></h4>

@@ -14,6 +14,7 @@
 </head>
 <body>
 <header><a href="/songList">Dashboard</a></header>
+<h1>Add a Song</h1>
 <form:form action="/create" method ="post" modelAttribute="song">
 	<div class="form-group">
 		<form:label path="songName">Title:</form:label>
@@ -23,12 +24,12 @@
 	<div class="form-group">
 		<form:label path="artistName">Artist:</form:label>
 		<form:errors path="artistName"/>
-		<form:input type="text" pathr="artistName"/>
+		<form:input type="text" path="artistName"/>
 	</div>
 	<div class="form-group">
 		<form:label path="rating">Rating (1-10):</form:label>
 		<form:errors path="rating"/>
-		<form:input type="Integer" path="rating"/>
+		<form:input type="number" path="rating"/>
 	</div>
 	<button class="btn-secondary">Add Song</button>
 </form:form>

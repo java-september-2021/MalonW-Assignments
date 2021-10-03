@@ -1,5 +1,7 @@
 package com.malonwright.Lookify.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,33 +22,35 @@ import com.malonwright.Lookify.services.songService;
 
 @Controller
 public class HomeController {
+	
 	@Autowired
 	private songService sService;
 	
 	//index
 	@GetMapping("/")
 	public String index() {
-		return "index.jsp";
+		return "/startpage.jsp";
 	}
 	//song list all songs
 	@GetMapping("/songList")
 	public String songList(Model viewModel) {
-		viewModel.addAttribute("song", this.sService.getAllSongs());
-		return "songList.jsp";
+		List<Song> songs= this.sService.getAllSongs();
+		viewModel.addAttribute("allsongs",songs);
+		return "/songList.jsp";
 	}
 	//New Song Page
 	@GetMapping("/new")
 	public String newSong(@ModelAttribute("song")Song song) {
-		return "newSong.jsp";
+		return "/newSong.jsp";
 	}
 	//Create
 	@PostMapping("/create")
 	public String addSong(@Valid @ModelAttribute("song")Song song, BindingResult result) {
 		if(result.hasErrors()) {
-			return "newSong.jsp";			
+			return "/newSong.jsp";			
 		}
 		this.sService.createSong(song);
-		return "redirect:/songList.jsp";
+		return "redirect:/songList";
 	}
 	//Top 10 Songs
 	@GetMapping("/topSongs")
@@ -56,20 +60,23 @@ public class HomeController {
 	}
 	//Search by Artist
 	@GetMapping("/search")
-	public String searchResults(@RequestParam("artistName")String search, Model viewModel) {
-		viewModel.addAttribute("song",sService.searchByArtist(search));
-		return "search.jsp";
+	public String searchResults(@RequestParam("artist")String artist, Model viewModel) {
+		List<Song> artistSearch = this.sService.searchByArtist(artist);
+		
+		viewModel.addAttribute("song",artistSearch);
+		return "/search.jsp";
 	}
 	//Song Details
 	@GetMapping("/details/{id}")
 	public String songDetails(@PathVariable("id")Long id,Model viewModel) {
 		viewModel.addAttribute("song", this.sService.getOneSong(id));
-		return "details.jsp";
+		return "/details.jsp";
 	}
 	//Delete Song
 	@DeleteMapping("/delete/{id}")
-	public void deleteSong(@PathVariable("id")Long id) {
+	public String destroySong(@PathVariable("id")Long id) {
 		sService.deleteSong(id);
+		return "redirect:/songList";
 	}
 	
 	

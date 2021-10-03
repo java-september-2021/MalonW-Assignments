@@ -14,32 +14,36 @@
 </head>
 <body>
 <header>
-<a href="new">Add New</a>
-<a href="/topSongs">Top Songs</a>
-<form:form action="/search" method="post" >
-<form:input type="text" path="artistName"/>
-<button type="submit" class = "btn-secondary">Search</button>
-</form:form>
+	<a href="new">Add New</a>
+	<a href="/topSongs">Top Songs</a>
+	<form action="/search" method="get" >
+		<input type="text" name="artist" placeholder="Search"/>
+		<button type="submit" class = "btn-secondary">Search</button>
+	</form>
 </header>
 <div class="container">
-<table class="table">
-<thead>
-	<tr>
-		<th>Name</th>
-		<th>Rating</th>
-		<th>Actions</th>
-	</tr>
-</thead>
-<tbody class="table-info">
-	<c:forEach items="${song}" var="song">
-	<tr>
-		<td><a href="/details"><c:out value="${song.songName}"/></a></td>
-		<td><c:out value ="${song.rating}"/></td>
-		<td><a href="/delete/${song.id}">Delete</a></td>
-	</tr>
-	</c:forEach>
-</tbody>
-</table>
+<h1>All Songs</h1>
+<hr>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Name</th>
+				<th scope="col">Artist</th>
+				<th scope="col">Rating</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody class="table-info">
+			<c:forEach items="${allsongs}" var="song">
+			<tr>
+				<td><a href="/details/${song.id}"><c:out value="${song.songName}"/></a></td>
+				<td><c:out value ="${song.artistName}"/></td>
+				<td><c:out value ="${song.rating}"/></td>
+				<td><a href="/delete/${song.id}">Delete</a></td>
+			</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 </div>
 </body>
 </html>

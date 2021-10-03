@@ -14,46 +14,50 @@
 </head>
 <body>
 <header>
-<div class="col-1 offset-2">
+<h5>
 <a href="/new">Add New Song</a>
-</div>
-<div class="col-2">
+</h5>
+<h5>
 <a href="/topSongs">Top Songs</a>
-</div>
-<div class="col-4 offset-3 form-group">
-<form:form action="/search" method ="get">
-<form:input type="text" path="search"/>
-<form:label path="search"/>
-<button class="btn-warning">Search</button>
-</form:form>
+</h5>
+<h5>
+<a href="/songList">Dashboard</a>
+</h5>
+
+<div class="form-group">
+<form action="/search">
+		<input type="text" placeholder="Search" name="artist">
+		<button class="btn-warning" type="submit">Search</button>
+		</form>
 </div>
 </header>
+<hr>
 <div class="row">
-<h2>Songs By:<c:out value="${artistName}"/></h2>
+
 	<table class="table">
 <thead>
 	<tr>
 		<th>Name</th>
+		<th>Artist</th>
 		<th>Rating</th>
 		<th>Action</th>
 	</tr>
 </thead>
 <tbody class="table-info">
 	<c:forEach items="${song}" var="song">
+	
 	<tr>
 		<td><a href="/details"><c:out value="${song.songName}"/></a></td>
+		<td><c:out value ="${song.artistName}"/></td>
 		<td><c:out value ="${song.rating}"/></td>
 		<td><form action="/delete/${song.id}"  method="post">
-    						<input type="hidden" name="_method" value="delete">
-    						<input type="submit" value="Delete" class="delete"></form></td>
+			<input type="hidden" name="_method" value="delete">
+			<input type="submit" value="Delete" class="delete"></form></td>
+			<td> <a href="/delete/${song.id}">Delete1</a></td>
 	</tr>
 	</c:forEach>
 </tbody>
 </table>
-	
-		
-		</c:forEach>
-	</ul>
 </div>
 </body>
 </html>

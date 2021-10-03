@@ -7,38 +7,21 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Top Songs</title>
+<title>New Product</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 
 </head>
 <body>
-<header>
-	<a href="new">Add New</a>
-	<a href="/songList">Dashboard</a>
-</header>
+<header><a href ="/addCat">Add New Category</a></header>
 <div class="container">
-<h1>Top Songs</h1>
-<hr>
-<table class="table">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Rating</th>
-			</tr>
-		</thead>
-		<tbody>
-				<c:forEach items="${song}" var="song">
-			<tr class="table-info">
-				<td><a href="/details/${song.id}"><c:out value="${song.songName}"/></a></td>
-				<td><c:out value ="${song.rating}"/></td>
-		</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+	<h1>New Product</h1>
+<form:form class="form-group">
+	<form:label path="productName">Name:</form:label>
+	
+</form:form>
 </div>
-
 
 </body>
 </html>
