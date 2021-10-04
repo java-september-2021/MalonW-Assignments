@@ -13,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="products")
@@ -21,8 +24,13 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	@NotBlank
+	@Size(min=2)
 	private String name;
+	@NotBlank
+	@Size(min=2)
 	private String description;
+	@NotNull
 	private float price;
 	@Column(updatable=false)
 	private Date createdAt;
