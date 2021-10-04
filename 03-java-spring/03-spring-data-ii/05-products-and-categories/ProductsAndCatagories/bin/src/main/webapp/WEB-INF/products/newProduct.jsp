@@ -7,18 +7,18 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>New Category</title>
+<title>New Product</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 
 </head>
 <body>
-<header><a href ="/products/newProd">Add New Product</a></header>
+<header><a href ="/categories/newCat">Add New Category</a></header>
 <hr>
 <div class="container">
-	<h1>New Category</h1>
-<form:form class="form-group" action="/categories/create" method="post">
+	<h1>New Product</h1>
+<form:form class="form-group" action="/products/create" method="post">
 	<div class="form-control">
 	<form:label path="productName">Name:</form:label>
 	<form:errors path="produtName"/>
@@ -28,14 +28,28 @@
 </form:form>
 </div>
 <hr>
-<div class="categoryList">
-<h2>Category List</h2>
-<hr>
-<ul>
-	<c:forEach items="${categories}" var="cat">
-	<li><c:out ${cat.name} /></li>	
+<div class="ProductList">
+<h2>Product List</h2>
+<table class="table">
+<thead>
+	<tr>
+		<th>Product Name</th>
+		<th>Description</th>
+		<th>Price (US $)</th>
+	</tr>
+</thead>
+<tbody>
+	<c:forEach items="#{products}" var="prod">
+	<tr class="table-info">
+		<td><a href="/products/details/${prod.id}"><c:out ${prod.name}/></a></td>
+		<td><c:out ${prod.description}/></td>
+		<td><c:out ${prod.price} /></td>
+	</tr>
 	</c:forEach>
-</ul>
+</tbody>
+	
+
+</table>
 </div>
 </body>
 </html>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.malonwright.ProductsAndCategories.models.Category;
 import com.malonwright.ProductsAndCategories.models.Product;
 import com.malonwright.ProductsAndCategories.repositories.ProductRepository;
 
@@ -27,6 +28,15 @@ public class ProductService {
 	//create
 	public Product createProduct(Product product) {
 		return this.pRepo.save(product);
+	}
+//	Products not in specific category
+	public List<Product> getProductNotInCategory(Category category){
+		return this.pRepo.findByCategoriesNotContains(category);
+	}
+//	Add Product to Cat
+	public void addCatToProd(Category category, Product product) {
+		product.getCategories().add(category);
+		this.pRepo.save(product);
 	}
 }
 	

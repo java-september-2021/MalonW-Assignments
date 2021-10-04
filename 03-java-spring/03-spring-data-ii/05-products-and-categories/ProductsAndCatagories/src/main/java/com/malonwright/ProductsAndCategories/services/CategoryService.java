@@ -38,5 +38,9 @@ public class CategoryService {
 	public List<Category> NotIncludedCats(Product product){
 		return this.cRepo.findByProductsNotContains(product);
 	}
-	
+//	add Product to category and save
+	public void addProductToCategory(Category category, Product product) {
+		category.getProducts().add(product);
+		this.cRepo.save(category);
+	}
 }

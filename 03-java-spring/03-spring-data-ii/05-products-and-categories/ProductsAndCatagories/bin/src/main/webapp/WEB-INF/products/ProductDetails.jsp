@@ -28,16 +28,16 @@
 		<h5>Categories</h5>
 			<ul>
 				<c:forEach items="${categories}" var="cat">
-					<li><a href="/categories/details/${cat.id}"><c:out ${cat.name} /></a></li>
+					<li><c:out ${cat.name} /></li>
 				</c:forEach>
 			</ul>
 	</div>
 	<div class="col">
-		<form:form action="/products/addprodCat/{id}" method="post" ModelAttribute="categoru">
+		<form:form action="/products/add" method="post" ModelAttribute="categoru">
 		<form:label path = "product"/>
 		<form:select path="product">
-			<c:forEach items="${notInCat}" var="cat">
-			<option value="${cat.id}">${cat.category}</option>
+			<c:forEach items="${products}" var="prod">
+			<option value="${product.id}">${product.category}</option>
 			</c:forEach>
 		</form:select>
 		<button class ="btn-primary" type="submit">Add</button>

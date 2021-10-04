@@ -36,6 +36,6 @@
 	<li><c:out ${cat.name} /></li>	
 	</c:forEach>
 </ul>
-</div>
+<</div>
 </body>
 </html>

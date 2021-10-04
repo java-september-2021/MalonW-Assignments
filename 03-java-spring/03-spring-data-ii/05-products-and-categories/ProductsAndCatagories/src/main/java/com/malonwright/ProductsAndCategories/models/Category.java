@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 
@@ -36,10 +38,19 @@ public class Category {
 			)
 	private List<Product> products;
 	
+	@PrePersist
+    protected void onCreate(){
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    protected void onUpdate(){
+        this.updatedAt = new Date();
+    }
+    
 	public Category() {
 		
 	}
-
+	//getters and setters
 	public Long getId() {
 		return id;
 	}
@@ -72,5 +83,10 @@ public class Category {
 		this.updatedAt = updatedAt;
 	}
 
-	
+	public List<Product> getProducts(){
+		return products;
+	}
+	public void setProducts(List<Product> product) {
+		this.products=product;
+	}
 }
