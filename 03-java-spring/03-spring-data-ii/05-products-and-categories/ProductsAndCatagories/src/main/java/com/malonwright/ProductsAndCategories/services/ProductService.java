@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.malonwright.ProductsAndCategories.models.Category;
 import com.malonwright.ProductsAndCategories.models.Product;
+import com.malonwright.ProductsAndCategories.models.User;
 import com.malonwright.ProductsAndCategories.repositories.ProductRepository;
 
 
@@ -36,6 +37,17 @@ public class ProductService {
 //	Add Product to Cat
 	public void addCatToProd(Category category, Product product) {
 		product.getCategories().add(category);
+		this.pRepo.save(product);
+	}
+	
+	//adding Like to products From Users
+	public void LikeProduct(User user, Product product) {
+		product.getUserLiked().add(user);
+		this.pRepo.save(product);
+	}
+	
+	public void UserUnlikes(User user, Product product) {
+		product.getUserLiked().remove(user);
 		this.pRepo.save(product);
 	}
 }

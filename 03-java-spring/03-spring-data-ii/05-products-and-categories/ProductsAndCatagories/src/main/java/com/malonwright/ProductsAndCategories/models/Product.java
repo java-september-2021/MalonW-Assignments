@@ -44,7 +44,15 @@ public class Product {
 			inverseJoinColumns=@JoinColumn(name="category_id")
 			)
 	private List<Category> categories;
+	
+	private List<User> userLiked;
 
+	public List<User> getUserLiked() {
+		return userLiked;
+	}
+	public void setUserLiked(List<User> userLiked) {
+		this.userLiked = userLiked;
+	}
 	@PrePersist
     protected void onCreate(){
         this.createdAt = new Date();

@@ -31,14 +31,24 @@
 		<th>Product Name</th>
 		<th>Description</th>
 		<th>Price (US $)</th>
+		<th>Favorite</th>
 	</tr>
 </thead>
 <tbody>
 	<c:forEach items="#{products}" var="prod">
 	<tr class="table-info">
-		<td><c:out ${prod.name}/></td>
+		<td><a href="/products/details/${prod.id}"><c:out ${prod.name}/></a></td>
 		<td><c:out ${prod.description}/></td>
 		<td><c:out ${prod.price} /></td>
+		<td><c:choose>
+		<c:when test="${prod.userFavorite.contains(user}">
+		<a href="/favorite/${prod.id}">Favorite</a>
+		</c:when>
+		<c:otherwise>
+		<a href="/unfavorite/${prod.id}">UnFavorite</a>
+		</c:otherwise>
+		</c:choose>
+		Number of Favorites=<c:out value="${prod.userFavorite.size()}"/></td>		
 	</tr>
 	</c:forEach>
 </tbody>
