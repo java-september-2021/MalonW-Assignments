@@ -1,61 +1,61 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>  
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Home Page</title>
-<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/css/style.css">
-<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<header>
-<h3><a href ="/catagories/addCat">Add New Category</a></h3>
-<h3><a href ="/products/addProd">Add New Product</a></h3>
-</header>
-<hr>
-<div class="container">
+<div class = "container">
 
-<hr>
-<div class="row">
-<div class="col">
-<h2>Product List</h2>
-<table class="table">
-<thead>
-	<tr>
-		<th>Product Name</th>
-		<th>Description</th>
-		<th>Price (US $)</th>
-	</tr>
-</thead>
-<tbody>
-	<c:forEach items="#{products}" var="prod">
-	<tr class="table-info">
-		<td><c:out ${prod.name}/></td>
-		<td><c:out ${prod.description}/></td>
-		<td><c:out ${prod.price} /></td>
-	</tr>
-	</c:forEach>
-</tbody>
-	
-
-</table>
-</div>
-</div>
-<div class="col">
-<h2>Category List</h2>
-<hr>
-<ul>
-	<c:forEach items="${categories}" var="cat">
-	<li><c:out ${cat.name} /></li>	
-	</c:forEach>
-</ul>
-</div>
+<h1>New User</h1>
+	<div class ="col">
+		<div>
+			<form:form action="/user/new" method="post" modelAttribute="user">
+				<div class = "form-group row">
+				    <p>
+				        <form:label path="firstName">First Name</form:label>
+				        <form:errors path="firstName"/>
+				        <form:input path="firstName" class="form-control"/>
+				    </p>
+				 </div>
+				 <div class = "form-group row">
+				    <p>
+				        <form:label path="lastName">Last Name</form:label>
+				        <form:errors path="lastName"/>
+				        <form:textarea path="lastName"  class="form-control"/>
+				    </p>
+				 </div>
+			    <input type="submit" value="Submit"/>
+			</form:form>  
+		</div> 
+				 
+				     
+		<div>
+		<h2>Login</h2>
+		<hr>
+		<form action = "/login" method = "POST">
+		<label for="userToLogin">Please select:</label>
+		<select name="userToLogin">
+		<c:forEach items="${allUser}" var="user">
+			<option value = "${user.id}">${user.firstName}</option>
+		</c:forEach>
+		</select>
+			
+			
+	 <input type="submit" value="Login"/>
+		</form>
+		</div>  
+	</div>
 </div>
 </body>
 </html>
+	
+        
+
+
+

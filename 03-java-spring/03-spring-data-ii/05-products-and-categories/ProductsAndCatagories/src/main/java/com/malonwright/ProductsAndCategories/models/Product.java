@@ -45,6 +45,15 @@ public class Product {
 			)
 	private List<Category> categories;
 
+	private List<User> userFavorite;
+
+	public List<User> getuserFavorite() {
+		return userFavorite;
+	}
+	public void setuserFavorite(List<User> userFavorite) {
+		this.userFavorite = userFavorite;
+	}
+	
 	@PrePersist
     protected void onCreate(){
         this.createdAt = new Date();

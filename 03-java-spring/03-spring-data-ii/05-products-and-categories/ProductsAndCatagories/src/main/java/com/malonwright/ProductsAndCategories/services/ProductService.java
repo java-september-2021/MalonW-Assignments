@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.malonwright.ProductsAndCategories.models.Category;
 import com.malonwright.ProductsAndCategories.models.Product;
+import com.malonwright.ProductsAndCategories.models.User;
 import com.malonwright.ProductsAndCategories.repositories.ProductRepository;
 
 
@@ -38,6 +39,18 @@ public class ProductService {
 		product.getCategories().add(category);
 		this.pRepo.save(product);
 	}
+	
+	//adding Like to products From Users
+		public void UserFavorites(User user, Product product) {
+			product.getuserFavorite().add(user);
+			this.pRepo.save(product);
+		}
+		
+		public void UserUnFavorites(User user, Product product) {
+			product.getuserFavorite().remove(user);
+			this.pRepo.save(product);
+		}
+	
 }
 	
 

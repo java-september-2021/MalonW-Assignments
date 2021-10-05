@@ -25,12 +25,20 @@
 <div class="row">
 	<div class="col">
 		<h2><c:out ${product.name}/></h2>
+		
 		<h5>Categories</h5>
 			<ul>
 				<c:forEach items="${categories}" var="cat">
 					<li><a href="/categories/details/${cat.id}"><c:out ${cat.name} /></a></li>
 				</c:forEach>
 			</ul>
+		<h5>Favorited By:</h5>
+		<hr>
+		<ul>
+			<c:forEach items="${products.favorites}" var="user">
+				<li> ${user.firstName} ${user.lastName}
+			</c:forEach>
+		</ul>	
 	</div>
 	<div class="col">
 		<form:form action="/products/addprodCat/{id}" method="post" ModelAttribute="categoru">
