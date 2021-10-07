@@ -15,8 +15,10 @@
 </head>
 <body>
 <header>
-	<h3><a href ="/catagories/addCat">Add New Category</a></h3>
-	<h3><a href ="/products/addProd">Add New Product</a></h3>
+	<h4><a href ="/catagories/addCat">Add New Category</a></h4>
+	<h4><a href ="/products/addProd">Add New Product</a></h4>
+	<h4><a href="/home">Home</a></h4>
+	<h4><a href="/logout">Logout</a></h4>
 </header>
 	<hr>
 <div class="container">
@@ -24,28 +26,28 @@
 	<hr>
 <div class="row">
 	<div class="col">
-		<h2><c:out ${product.name}/></h2>
+		<h2><c:out value="${product.name}" /></h2>
 		
 		<h5>Categories</h5>
 			<ul>
-				<c:forEach items="${categories}" var="cat">
-					<li><a href="/categories/details/${cat.id}"><c:out ${cat.name} /></a></li>
+				<c:forEach items="${product.categories}" var="cat">
+					<li><a href="/categories/details/${cat.id}"><c:out value="${cat.name}" /></a></li>
 				</c:forEach>
 			</ul>
-		<h5>Favorited By:</h5>
+		<h5>Favorite By:</h5>
 		<hr>
 		<ul>
-			<c:forEach items="${products.favorites}" var="user">
-				<li> ${user.firstName} ${user.lastName}
+			<c:forEach items="${product.userFavorite}" var="user">
+				<li><c:out value="${user.firstName} ${user.lastName}" />
 			</c:forEach>
 		</ul>	
 	</div>
 	<div class="col">
-		<form:form action="/products/addprodCat/{id}" method="post" ModelAttribute="categoru">
-		<form:label path = "product"/>
-		<form:select path="product">
+		<form:form action="/products/addcatProd/{id}" method="post" modelAttribute="product">
+		<form:label path = "categories">Add Category to Product</form:label>
+		<form:select path="categories">
 			<c:forEach items="${notInCat}" var="cat">
-			<option value="${cat.id}">${cat.category}</option>
+			<option value="${cat.id}">${cat.name}</option>
 			</c:forEach>
 		</form:select>
 		<button class ="btn-primary" type="submit">Add</button>

@@ -11,10 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 
 @Entity
@@ -24,18 +25,18 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
+	@NotBlank
 	private String name;
 	
 	@Column(updatable=false)
 	private Date createdAt;
 	private Date updatedAt;
 	
-	@OneToMany(fetch=FetchType.LAZY)
+	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(
 			name="categories_products",
-			joinColumns = @JoinColumn(name="product_id"),
-			inverseJoinColumns=@JoinColumn(name="category_id")
+			joinColumns = @JoinColumn(name="category_id"),
+			inverseJoinColumns=@JoinColumn(name="product_id")
 			)
 	private List<Product> products;
 	

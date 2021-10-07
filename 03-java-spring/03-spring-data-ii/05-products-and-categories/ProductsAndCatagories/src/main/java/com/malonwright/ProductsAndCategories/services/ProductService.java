@@ -42,6 +42,7 @@ public class ProductService {
 	
 	//adding Like to products From Users
 		public void UserFavorites(User user, Product product) {
+			
 			product.getuserFavorite().add(user);
 			this.pRepo.save(product);
 		}

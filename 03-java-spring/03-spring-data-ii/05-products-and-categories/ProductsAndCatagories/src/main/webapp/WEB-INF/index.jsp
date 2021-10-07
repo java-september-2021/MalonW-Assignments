@@ -27,7 +27,7 @@
 				    <p>
 				        <form:label path="lastName">Last Name</form:label>
 				        <form:errors path="lastName"/>
-				        <form:textarea path="lastName"  class="form-control"/>
+				        <form:input path="lastName"  class="form-control"/>
 				    </p>
 				 </div>
 			    <input type="submit" value="Submit"/>
@@ -41,7 +41,7 @@
 		<form action = "/login" method = "POST">
 		<label for="userToLogin">Please select:</label>
 		<select name="userToLogin">
-		<c:forEach items="${allUser}" var="user">
+		<c:forEach items="${allUsers}" var="user">
 			<option value = "${user.id}">${user.firstName}</option>
 		</c:forEach>
 		</select>

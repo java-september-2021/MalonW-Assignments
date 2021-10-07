@@ -14,16 +14,31 @@
 
 </head>
 <body>
-<header><a href ="/categories/newCat">Add New Category</a></header>
+<header><h4><a href ="/categories/addCat">Add New Category</a></h4>
+<h4><a href="/home">Home</a></h4>
+<h4><a href="/logout">Logout</a></h4>	
+</header>
 <hr>
 <div class="container">
 	<h1>New Product</h1>
-<form:form class="form-group" action="/products/create" method="post">
-	<div class="form-control">
-	<form:label path="productName">Name:</form:label>
-	<form:errors path="produtName"/>
-	<form:input path="productName" type="text"/>
+<form:form action="/products/create" method="post" modelAttribute="product" >
+	<div class="form-group">
+	<form:label path="name" >Name:</form:label>
+	<form:errors path="name" />
+	<form:input path="name" type="text"/>
 	</div>
+	<div class="form-group">
+	<form:label path="description" >Description:</form:label>
+	<form:errors path="description" />
+	<form:input path="description" type="textbox"/>
+	</div>
+	<div class="form-group">
+	<form:label path="price" >Price $:</form:label>
+	<form:errors path="price" />
+	<form:input path="price" type="number"/>
+	</div>
+	
+	
 	<button class ="btn btn-primary" type="submit">Create</button>
 </form:form>
 </div>
@@ -39,11 +54,11 @@
 	</tr>
 </thead>
 <tbody>
-	<c:forEach items="#{products}" var="prod">
+	<c:forEach items="${products}" var="prod">
 	<tr class="table-info">
-		<td><a href="/products/details/${prod.id}"><c:out ${prod.name}/></a></td>
-		<td><c:out ${prod.description}/></td>
-		<td><c:out ${prod.price} /></td>
+		<td><a href="/products/details/${prod.id}"><c:out value="${prod.name}" /></a></td>
+		<td><c:out value="${prod.description}" /></td>
+		<td><c:out value="${prod.price}" /></td>
 	</tr>
 	</c:forEach>
 </tbody>

@@ -55,8 +55,9 @@ public class User {
 	
 	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(
-			name="categories_products",//this was favorites
-			joinColumns = @JoinColumn(name="product_id")
+			name="favorites",
+			joinColumns = @JoinColumn(name="user_id"),
+			inverseJoinColumns=@JoinColumn(name="product_id")
 			)
 	private List<Product> prductLiked;
 

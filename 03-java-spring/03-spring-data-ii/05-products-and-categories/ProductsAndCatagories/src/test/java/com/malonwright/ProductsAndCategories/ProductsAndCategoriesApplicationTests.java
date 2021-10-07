@@ -1,4 +1,4 @@
-package com.malonwright.ProductsAndCatagories;
+package com.malonwright.ProductsAndCategories;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

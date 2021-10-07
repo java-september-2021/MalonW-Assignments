@@ -15,8 +15,9 @@
 </head>
 <body>
 <header>
-<h3><a href ="/catagories/addCat">Add New Category</a></h3>
-<h3><a href ="/products/addProd">Add New Product</a></h3>
+<h4><a href ="/categories/addCat">Add New Category</a></h4>
+<h4><a href ="/products/addProd">Add New Product</a></h4>
+<h4><a href="/logout">Logout</a></h4>
 </header>
 <hr>
 <div class="container">
@@ -34,14 +35,14 @@
 	</tr>
 </thead>
 <tbody>
-	<c:forEach items="#{products}" var="prod">
+	<c:forEach items="${products}" var="prod">
 	<tr class="table-info">
-		<td><a href="/products/details/${prod.id}"><c:out ${prod.name}/></a></td>
-		<td><c:out ${prod.description}/></td>
-		<td><c:out ${prod.price} /></td>
+		<td><a href="/products/details/${prod.id}"><c:out value="${prod.name}" /></a></td>
+		<td><c:out value="${prod.description}" /></td>
+		<td><c:out value="${prod.price}" /></td>
 		<td>
 		<c:choose>
-		<c:when test="$prod.UserFavorites.contains(user)}">
+		<c:when test="${prod.userFavorite.contains(user)}">
 			<a href="/unfavorite/${prod.id}">UnFavorite</a>
 		</c:when>
 			<c:otherwise>
@@ -61,8 +62,8 @@
 <h2>Category List</h2>
 <hr>
 <ul>
-	<c:forEach items="${categories}" var="cat">
-	<li><a href="/catagories/details/${cat.id}"><c:out ${cat.name} /></a></li>	
+	<c:forEach items="${category}" var="cat">
+	<li><a href="/categories/details/${cat.id}"><c:out value="${cat.name}" /></a></li>	
 	</c:forEach>
 </ul>
 </div>

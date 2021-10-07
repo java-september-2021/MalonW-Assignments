@@ -7,28 +7,23 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>New Product</title>
+<title>Home Page</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 
 </head>
 <body>
-<header><a href ="/categories/newCat">Add New Category</a></header>
+<header>
+<h3><a href ="/catagories/addCat">Add New Category</a></h3>
+<h3><a href ="/products/addProd">Add New Product</a></h3>
+</header>
 <hr>
 <div class="container">
-	<h1>New Product</h1>
-<form:form class="form-group" action="/products/create" method="post">
-	<div class="form-control">
-	<form:label path="productName">Name:</form:label>
-	<form:errors path="produtName"/>
-	<form:input path="productName" type="text"/>
-	</div>
-	<button class ="btn btn-primary" type="submit">Create</button>
-</form:form>
-</div>
+
 <hr>
-<div class="ProductList">
+<div class="row">
+<div class="col">
 <h2>Product List</h2>
 <table class="table">
 <thead>
@@ -36,31 +31,31 @@
 		<th>Product Name</th>
 		<th>Description</th>
 		<th>Price (US $)</th>
-		<th>Favorite</th>
 	</tr>
 </thead>
 <tbody>
 	<c:forEach items="#{products}" var="prod">
 	<tr class="table-info">
-		<td><a href="/products/details/${prod.id}"><c:out ${prod.name}/></a></td>
+		<td><c:out ${prod.name}/></td>
 		<td><c:out ${prod.description}/></td>
 		<td><c:out ${prod.price} /></td>
-		<td>
-			<c:choose>
-				<c:when test="${prod.userfavorite.contains(user)}">
-					<a href="/unfavorite/${prod.id}">UnFavorite</a>
-				</c:when>
-				<c:otherwise>
-					<a href="/favorite/${prod.id}">Favorite</a>
-				</c:otherwise>
-			</c:choose>
-		</td>
 	</tr>
 	</c:forEach>
 </tbody>
 	
 
 </table>
+</div>
+</div>
+		<div class="col">
+		<h2>Category List</h2>
+		<hr>
+		<ul>
+			<c:forEach items="${categories}" var="cat">
+			<li><c:out ${cat.name} /></li>	
+			</c:forEach>
+		</ul>
+		</div>
 </div>
 </body>
 </html>

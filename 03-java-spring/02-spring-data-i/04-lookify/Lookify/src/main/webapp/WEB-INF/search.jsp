@@ -53,7 +53,7 @@
 		<td><form action="/delete/${song.id}"  method="post">
 			<input type="hidden" name="_method" value="delete">
 			<input type="submit" value="Delete" class="delete"></form></td>
-			<td> <a href="/delete/${song.id}">Delete1</a></td>
+			
 	</tr>
 	</c:forEach>
 </tbody>

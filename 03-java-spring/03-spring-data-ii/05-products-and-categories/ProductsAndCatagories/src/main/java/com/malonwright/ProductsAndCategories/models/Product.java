@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -34,17 +35,24 @@ public class Product {
 	private String description;
 	@NotNull
 	private float price;
+	
 	@Column(updatable=false)
 	private Date createdAt;
 	private Date updatedAt;
-	@OneToMany(fetch=FetchType.LAZY)
+	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(
 			name="categories_products",
 			joinColumns = @JoinColumn(name="product_id"),
 			inverseJoinColumns=@JoinColumn(name="category_id")
 			)
 	private List<Category> categories;
-
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+			name="favorites",
+			joinColumns = @JoinColumn(name="product_id"),
+			inverseJoinColumns= @JoinColumn(name="user_id")
+			)
 	private List<User> userFavorite;
 
 	public List<User> getuserFavorite() {
