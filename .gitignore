@@ -1,0 +1,5 @@
+
+*.class
+03-java-spring/03-spring-data-ii/05-products-and-categories/ProductsAndCatagories/bin/src/main/java/com/malonwright/ProductsAndCategories/ProductsAndCatagoriesApplication.class
+03-java-spring/03-spring-data-ii/05-products-and-categories/ProductsAndCatagories/bin/src/test/java/com/malonwright/ProductsAndCategories/ProductsAndCategoriesApplicationTests.class
+03-java-spring/03-spring-data-ii/05-products-and-categories/ProductsAndCatagories/src/test/java/com/malonwright/ProductsAndCategories/ProductsAndCategoriesApplicationTests.java
