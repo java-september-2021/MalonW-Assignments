@@ -39,7 +39,10 @@
 				<td><a href="/details/${song.id}"><c:out value="${song.songName}"/></a></td>
 				<td><c:out value ="${song.artistName}"/></td>
 				<td><c:out value ="${song.rating}"/></td>
-				<td><a href="/delete/${song.id}">Delete</a></td>
+				<td>
+				<form action="/delete/${song.id}" method="post">
+				<input type="hidden" name="_method" value="delete">
+			<input type="submit" value="Delete" class="delete"></form></td>
 			</tr>
 			</c:forEach>
 		</tbody>
