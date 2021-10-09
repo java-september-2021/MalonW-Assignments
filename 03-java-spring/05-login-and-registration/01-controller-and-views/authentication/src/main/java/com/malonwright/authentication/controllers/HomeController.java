@@ -28,7 +28,7 @@ public class HomeController {
 	
 	//Index-registration and login page
 	@GetMapping("/")
-	public String registerForm(@ModelAttribute("user")User user) {
+	public String registerForm(@ModelAttribute("user") User user) {
 		return "registrationPage.jsp";
 	}
 	
